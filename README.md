@@ -16,6 +16,13 @@ to support@spinn3r.com or create a ticket by visiting our website.
 It's our goal to get you up and running ASAP and sometimes text documents may
 not explain all issues.
 
+Getting started
+===============
+
+First download the client here:
+
+    https://github.com/burtonator/spinn3r-artemis-client-example/releases
+
 Design and Architecture
 =======================
 
