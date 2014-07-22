@@ -21,7 +21,7 @@ Getting started
 
 First download the client here:
 
-    https://github.com/burtonator/spinn3r-artemis-client-example/releases
+https://github.com/burtonator/spinn3r-artemis-client-example/releases
 
 Design and Architecture
 =======================
@@ -72,10 +72,12 @@ Provision
 
 Run:
 
+```bash
 java -cp "lib/*" com.spinn3r.artemis.client.Provisioner \
      --dir=/var/spool/spinn3r-artemis-client/default \
      --vendor="MY_VENDOR_CODE" \
      --after=-1hour
+```
 
 NOTE: Make sure the quotes are included in the Java classpath or the command
 won't run due to bash file name expansion.
@@ -85,11 +87,13 @@ as relative time.
 
 Relative time is in the format:
 
-    -1hour
-    -2hours
-    -1day
-    +1hour
-    +1day
+```
+-1hour
+-2hours
+-1day
++1hour
++1day
+```
 
 The - (negative) prefix is used to denote time in the past.
 
@@ -101,13 +105,15 @@ If you would like to start from the current moment in time you could specify:
 
 After if you 'ls' the directory you will see:
 
-    root@my-host:/usr/share/spinn3r-artemis-client# ls -al /var/spool/spinn3r-artemis-client/default
-    total 20
-    drwxr-xr-x 4 root root 4096 Jun 28 18:05 .
-    drwxr-xr-x 3 root root 4096 Jun 28 18:05 ..
-    drwxr-xr-x 2 root root 4096 Jun 28 18:05 data
-    drwxr-xr-x 2 root root 4096 Jun 28 18:05 logs
-    -rw-r--r-- 1 root root  185 Jun 28 18:05 resume.checkpoint
+```
+root@my-host:/usr/share/spinn3r-artemis-client# ls -al /var/spool/spinn3r-artemis-client/default
+total 20
+drwxr-xr-x 4 root root 4096 Jun 28 18:05 .
+drwxr-xr-x 3 root root 4096 Jun 28 18:05 ..
+drwxr-xr-x 2 root root 4096 Jun 28 18:05 data
+drwxr-xr-x 2 root root 4096 Jun 28 18:05 logs
+-rw-r--r-- 1 root root  185 Jun 28 18:05 resume.checkpoint
+```
 
 The data directory stores all the json files that the client fetches.
 
@@ -118,7 +124,9 @@ Run the client
 
 Now just run the client.
 
+```bash
 java -cp "lib/*" com.spinn3r.artemis.client.Client --dir=/var/spool/spinn3r-artemis-client/default
+```
 
 Archives
 ========
