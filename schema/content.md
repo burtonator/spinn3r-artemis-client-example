@@ -1,28 +1,30 @@
 
-Table content
-====================
+content
+==============
 
 Stores content in our index including the full HTML as well  as the metadata we were able to extract.  Some of these  fields are HTML which are cleaned any unsafe elements which might cause cross scripting attacks or other vulnerabilites are removed.  Additionally, All URLs are fully expanded. Encoding is UTF-8. 
 
 A basic example of data in JSON format.
 
-> {
+```json
+{
   "bucket" : 0,
   "permalink" : "http://cnn.com",
-  "indexMethod" : "PERMALINK_TASK",
+  "index_method" : "PERMALINK_TASK",
   "html" : "<html><body><p>Full HTML of the content</p></body></html>",
-  "htmlLength" : 57,
-  "sourceHashcode" : "COH0cFU4G1sMlRHd9gEvS-n3FFI",
-  "sourceResource" : "http://cnn.com",
-  "sourceLink" : "http://cnn.com",
-  "sourcePublisherType" : "MAINSTREAM_NEWS",
-  "sourceDateFound" : "2014-06-22T01:08:52Z",
-  "sourceUpdateInterval" : 900000,
+  "html_length" : 57,
+  "source_hashcode" : "COH0cFU4G1sMlRHd9gEvS-n3FFI",
+  "source_resource" : "http://cnn.com",
+  "source_link" : "http://cnn.com",
+  "source_publisher_type" : "MAINSTREAM_NEWS",
+  "source_date_found" : "2014-06-22T01:08:52Z",
+  "source_update_interval" : 900000,
   "main" : "<p>Full HTML of the content</p>",
   "title" : "CNN example post.",
   "section" : "Technology",
   "description" : "This is the description"
 }
+```
 
 # bucket
 
@@ -82,10 +84,10 @@ The method that we used to discovery and index the content.  We have various alg
 
 This is an enum type.  The following values are accepted:
 
-*PERMALINK_TASK*
+**PERMALINK_TASK**
 Content indexed by the permalink task.
 
-*SOURCE_TASK*
+**SOURCE_TASK**
 Content indexed by the source task.
 
 # html
@@ -146,31 +148,31 @@ The publisher type (mainstream news, weblog, forum, etc) of this source encoded 
 
 This is an enum type.  The following values are accepted:
 
-*UNKNOWN*
+**UNKNOWN**
 Unknown publisher type.
 
-*WEBLOG*
+**WEBLOG**
 Weblog.  Defined as a smaller site, usually owned by an individual.
 
-*MAINSTREAM_NEWS*
+**MAINSTREAM_NEWS**
 Mainstream news source.  Generally owned by a corporation with multiple paid writers.
 
-*CLASSIFIED*
+**CLASSIFIED**
 Classified site.  Craigslist, Backpage, etc.
 
-*FORUM*
+**FORUM**
 Forum sites like phpBB, phorum, vbulletin, etc
 
-*REVIEW*
+**REVIEW**
 Review site.  Like epinions, amazon reviews, etc.
 
-*MEMETRACKER*
+**MEMETRACKER**
 Memetracker like reddit, digg, techmeme, google news, etc
 
-*MICROBLOG*
+**MICROBLOG**
 Microblog content such as Twitter, identi.ca, etc.
 
-*SOCIAL_MEDIA*
+**SOCIAL_MEDIA**
 Social media sites (facebook, instagram, etc).
 
 # source_date_found

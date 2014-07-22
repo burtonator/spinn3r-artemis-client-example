@@ -1,6 +1,6 @@
 
-Table source
-====================
+source
+==============
 
 Stores metadata for representing a source in our index.  Weblog, twitter, mainstream news, etc.
 
@@ -34,31 +34,31 @@ The publisher type (mainstream news, weblog, forum, etc) of this source encoded 
 
 This is an enum type.  The following values are accepted:
 
-*UNKNOWN*
+**UNKNOWN**
 Unknown publisher type.
 
-*WEBLOG*
+**WEBLOG**
 Weblog.  Defined as a smaller site, usually owned by an individual.
 
-*MAINSTREAM_NEWS*
+**MAINSTREAM_NEWS**
 Mainstream news source.  Generally owned by a corporation with multiple paid writers.
 
-*CLASSIFIED*
+**CLASSIFIED**
 Classified site.  Craigslist, Backpage, etc.
 
-*FORUM*
+**FORUM**
 Forum sites like phpBB, phorum, vbulletin, etc
 
-*REVIEW*
+**REVIEW**
 Review site.  Like epinions, amazon reviews, etc.
 
-*MEMETRACKER*
+**MEMETRACKER**
 Memetracker like reddit, digg, techmeme, google news, etc
 
-*MICROBLOG*
+**MICROBLOG**
 Microblog content such as Twitter, identi.ca, etc.
 
-*SOCIAL_MEDIA*
+**SOCIAL_MEDIA**
 Social media sites (facebook, instagram, etc).
 
 # date_found
@@ -182,19 +182,19 @@ When greater than zero, this source is marked as disabled.
 
 This is an enum type.  The following values are accepted:
 
-*ENABLED*
+**ENABLED**
 Default state.  The souce is enabled.
 
-*DISABLED*
+**DISABLED**
 The source is disabled but without a specific reason.
 
-*SPAM*
+**SPAM**
 The source has been marked as spam.
 
-*DUPLICATE*
+**DUPLICATE**
 Duplicate of another source.
 
-*INVALID*
+**INVALID**
 Invalid source.  Not anything we are interested in indexing.
 
 # setting_update_strategy
@@ -206,10 +206,10 @@ The update stratey for computing the update interval.
 
 This is an enum type.  The following values are accepted:
 
-*CYCLICAL*
+**CYCLICAL**
 Default update strategy.  Essentially just update the source at a regular rate.
 
-*ADAPTIVE*
+**ADAPTIVE**
 Adapt the update interval based on the posting frequency of the source.  This way we update sources less frequently if they post once per month compared to sources that update once per hour.
 
 # title
