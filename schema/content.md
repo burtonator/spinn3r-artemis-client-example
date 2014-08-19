@@ -341,7 +341,7 @@ A short description of the item (htmll)
 **type:**: set<text>
 **java type**: Set<String>
 
-Tags for the item.  
+Tags for the item.
 
 # published
 
