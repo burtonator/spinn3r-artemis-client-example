@@ -1,12 +1,13 @@
 Spinn3r (artemis) client
 ========================
 
+...
+
 The Spinn3r artemis client is used to connect to Spinn3r and fetch content from
 our servers, downloading it, and spooling the resulting content to disk.
 
 This project provides both an open source example of how to use the client 
 in your application as well as the official client.
-
 
 Support and Questions
 ========================
@@ -176,3 +177,5 @@ Footnotes
     implementation which we don't to break for our customers.  Further, this
     allows us to push out clients with new features without asking our customers
     to implement them.
+    
+    
