@@ -89,16 +89,22 @@ Provision
 Run:
 
 ```bash
-java -cp "lib/*" com.spinn3r.artemis.client.Provisioner \
+java -cp "/usr/share/spinn3r-artemis-client-fetcher/lib/*" com.spinn3r.artemis.client.fetcher.Provisioner \
      --dir=/var/spool/spinn3r-artemis-client/default \
-     --vendor="MY_VENDOR_CODE" \
-     --after=-1hour
+     --vendor=MY_VENDOR_CODE \
+     --after=-1hour \
+     --processPolicy=DELETE \
+     --fetchListenerClassName=com.spinn3r.artemis.client.watcher.LoggingFetcherListener
 ```
+
+The fetchListenerClassName is the name of your the class used to parse the JSON 
+if you're using our watcher package.  You can just specify the "LoggingFetcherListener"
+if you're going to be using a language other than java.
 
 NOTE: Make sure the quotes are included in the Java classpath or the command
 won't run due to bash file name expansion.
 
-The 'after' parameter accepts both absolute time if specified in ISO8106 as well
+The 'after' parameter accepts both absolute time if specified in ISO8601 as well
 as relative time.
 
 Relative time is in the format:
@@ -128,7 +134,9 @@ drwxr-xr-x 4 root root 4096 Jun 28 18:05 .
 drwxr-xr-x 3 root root 4096 Jun 28 18:05 ..
 drwxr-xr-x 2 root root 4096 Jun 28 18:05 data
 drwxr-xr-x 2 root root 4096 Jun 28 18:05 logs
+drwxr-xr-x 2 root root 4096 Jun 28 18:05 processed
 -rw-r--r-- 1 root root  185 Jun 28 18:05 resume.checkpoint
+drwxr-xr-x 2 root root 4096 Jun 28 18:05 tmp
 ```
 
 The data directory stores all the json files that the client fetches.
@@ -141,10 +149,8 @@ Run the client
 Now just run the client.
 
 ```bash
-java -cp "lib/*" com.spinn3r.artemis.client.Client --dir=/var/spool/spinn3r-artemis-client/default
+/etc/init.d/spinn3r-artemis-client-fetcher start
 ```
-
-All options for the client are read from the directory you specify.
 
 Archives
 ========
