@@ -1,12 +1,13 @@
 Spinn3r (artemis) client
 ========================
 
+...
+
 The Spinn3r artemis client is used to connect to Spinn3r and fetch content from
-our servers.  The content is then spooled to disk enabling efficient transfer 
-and recovery. 
+our servers, downloading it, and spooling the resulting content to disk.
 
 This project provides both an open source example of how to use the client 
-in your application as well to provide the download for the official client.
+in your application as well as the official client.
 
 Support and Questions
 ========================
@@ -37,21 +38,6 @@ Custom clients that connect to Spinn3r are NOT supported and we consider it
 an anti-pattern that will eventually break.  Unfortunately, there are far too
 many issues with implementing HTTP correctly that will eventually cause custom
 clients to fail [1].
-
-Daemons
-=======
-
-There are two daemons:
-
-spinn3r-artemis-client-fetcher:
-===============================
-
-Fetches content via HTTP and writes it to a local spool directory.
- 
-spinn3r-artemis-client-watcher:
- 
-Watches files in the spool directory and then executes code you provide to import
-the content into your database.
 
 File format
 ===========
@@ -89,22 +75,16 @@ Provision
 Run:
 
 ```bash
-java -cp "/usr/share/spinn3r-artemis-client-fetcher/lib/*" com.spinn3r.artemis.client.fetcher.Provisioner \
+java -cp "lib/*" com.spinn3r.artemis.client.Provisioner \
      --dir=/var/spool/spinn3r-artemis-client/default \
-     --vendor=MY_VENDOR_CODE \
-     --after=-1hour \
-     --processPolicy=DELETE \
-     --fetchListenerClassName=com.spinn3r.artemis.client.watcher.LoggingFetcherListener
+     --vendor="MY_VENDOR_CODE" \
+     --after=-1hour
 ```
-
-The fetchListenerClassName is the name of your the class used to parse the JSON 
-if you're using our watcher package.  You can just specify the "LoggingFetcherListener"
-if you're going to be using a language other than java.
 
 NOTE: Make sure the quotes are included in the Java classpath or the command
 won't run due to bash file name expansion.
 
-The 'after' parameter accepts both absolute time if specified in ISO8601 as well
+The 'after' parameter accepts both absolute time if specified in ISO8106 as well
 as relative time.
 
 Relative time is in the format:
@@ -134,9 +114,7 @@ drwxr-xr-x 4 root root 4096 Jun 28 18:05 .
 drwxr-xr-x 3 root root 4096 Jun 28 18:05 ..
 drwxr-xr-x 2 root root 4096 Jun 28 18:05 data
 drwxr-xr-x 2 root root 4096 Jun 28 18:05 logs
-drwxr-xr-x 2 root root 4096 Jun 28 18:05 processed
 -rw-r--r-- 1 root root  185 Jun 28 18:05 resume.checkpoint
-drwxr-xr-x 2 root root 4096 Jun 28 18:05 tmp
 ```
 
 The data directory stores all the json files that the client fetches.
@@ -149,15 +127,13 @@ Run the client
 Now just run the client.
 
 ```bash
-/etc/init.d/spinn3r-artemis-client-fetcher start
+java -cp "lib/*" com.spinn3r.artemis.client.Client --dir=/var/spool/spinn3r-artemis-client/default
 ```
 
 Archives
 ========
 
 By default all Spinn3r clients have access to the last 4 hours worth of content.
-
-We optimize our stack to keep hot data in cache and highly available.
 
 It's your responsibility to keep a client up and running and listening to data.
 
@@ -170,13 +146,12 @@ to cover that window.
 Designing your parser
 ====================
 
-Here are some rules to design a parser / data importer that handles changes to 
-our API moving forward.
+Here are some rules to design a parser that handles changes to our API moving
+forward.
 
 - The format will always be UTF8.
 
-- The JSON output will never change to another format unless it's on another 
-  endpoint.
+- The JSON output will never change to another format unless it's another endpoint.
 
 - You MUST handle additional fields. Just ignore them until you have a chance
   to review the documentation and see how they can benefit your application.
@@ -184,16 +159,6 @@ our API moving forward.
 - You MUST NOT rely on the output format being pretty printed.  In general it's
   best to use a real JSON parser like Jackson so that any idiosyncrasies in
   parsing are transparently handled.
-
-Importing data
-==============
-
-You SHOULD make your data import idempotent so that if you import data twice, you
-don't have two records.
-  
-You will find that it's much easier to process data this way.  You can easily 
-recover a client by just replaying JSON from archived content or contact us to 
-re-download it.
 
 Potential Issues and Warnings
 =============================
@@ -212,3 +177,5 @@ Footnotes
     implementation which we don't to break for our customers.  Further, this
     allows us to push out clients with new features without asking our customers
     to implement them.
+    
+    
