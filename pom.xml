@@ -6,7 +6,7 @@
     <groupId>com.spinn3r.artemis.client.example</groupId>
     <artifactId>spinn3r-artemis-client-example</artifactId>
 
-    <version>5.1.535</version>
+    <version>5.1.536</version>
 
     <description>Example of building a Spinn3r Artemis client.</description>
     <url>https://github.com/spinn3r/spinn3r-artemis-client-example</url>
