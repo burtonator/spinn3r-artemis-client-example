@@ -11,6 +11,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="spinn3r-artemis-client-api" />
     <orderEntry type="module" module-name="artemis-util" />
+    <orderEntry type="module" module-name="artemis-jetbrains-annotations" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="module" module-name="artemis-json-framework" />
     <orderEntry type="library" name="Maven: com.googlecode.java-diff-utils:diffutils:1.2.1" level="project" />
     <orderEntry type="module" module-name="artemis-guava" />
