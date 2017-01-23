@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.6.6" level="project" />
     <orderEntry type="module" module-name="spinn3r-artemis-client-api" />
     <orderEntry type="module" module-name="artemis-util" />
     <orderEntry type="module" module-name="artemis-jetbrains-annotations" />
